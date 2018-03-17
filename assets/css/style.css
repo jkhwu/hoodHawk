@@ -17,3 +17,9 @@ footer {
     color : white ;
     text-align : center ;
 }
+
+#map, #pano {
+    float: left;
+    height: 500px;
+    width: 50%;
+  }
