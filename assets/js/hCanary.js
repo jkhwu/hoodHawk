@@ -8,8 +8,8 @@ $('#submit').on('click', function() {
 
 
     event.preventDefault()
-    var address = $('#address').val()
-    var zipCode = $('#zip').val()
+    var address = $('#addressInput').val()
+    var zipCode = $('#zipCodeInput').val()
     
     initial()
 
@@ -70,6 +70,10 @@ $('#submit').on('click', function() {
             data: {}
         }).then(function(data) {
             console.log(data)
+            nationalPct = data[0]["block/crime"].result.all.nation_percentile
+            numberIncidents = data[0]["block/crime"].result.all.incidents
+            countyPct = data[0]["block/crime"].result.all.county_percentile
+            
         });
     }
 
