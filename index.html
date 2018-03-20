@@ -21,7 +21,7 @@
         </div>
     </nav>
 
-    <!-- Header Image and Form -->
+    <!-- Header Section -->
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
@@ -30,8 +30,21 @@
                 <div class="row center">
                     <h5 class="header col s12 light">Real estate data at your fingertips</h5>
                 </div>
+                <!-- Form Section -->
                 <div class="row center">
-                    <a href="#" id="download-button" class="btn-large waves-effect waves-light cyan">Get Info</a>
+                    <form class="col s10 offset-s1">
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">home</i>
+                            <input id="addressInput" type="text" required>
+                            <label for="addressInput">Street Address</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <i class="material-icons prefix">local_post_office</i>
+                            <input id="zipCodeInput" type="number" required>
+                            <label for="zipCodeInput">U.S. Zip Code</label>
+                        </div>
+                        <input id="submit" type="submit" value="Get Info" class="btn-large waves-effect waves-light cyan">
+                    </form>
                 </div>
                 <br><br>
             </div>
@@ -103,8 +116,7 @@
         <div class="parallax"><img src="assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
     </div>
 
-    <!-- footer -->
-    <footer class="page-footer teal">
+    <footer class="page-footer cyan">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
@@ -138,11 +150,11 @@
         <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
         <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 
-        <!--        local js files         -->
-        <script src='assets/js/firebase.js'></script>
-        <script src='assets/js/gMaps.js'></script>
-        <script src='assets/js/hCanary.js'></script>
-        <script src='assets/js/main.js'></script>
+    <!--        local js files         -->
+    <script src='assets/js/firebase.js'></script>
+    <script src='assets/js/gMaps.js'></script>
+    <script src='assets/js/hCanary.js'></script>
+    <script src='assets/js/main.js'></script>
 
 </body>
 
