@@ -14,8 +14,8 @@ $('#submit').on('click', function() {
     initial()
 
     function initial() {
-        var key = '3LSLSSTG46BO8P7H96I4'
-        var secret = 'XnqjMq7SujGcGlS05WCa4THVGNhpAU4a';
+        var key = '6MHHSYNZLAN18I6Y5A3L'
+        var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3';
         var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/property/details?address=${address}&zipcode=${zipCode}`
 
         $.ajax({
