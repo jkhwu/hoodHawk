@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initMap() {
+    console.log(lat)
     var myLocation = {
         lat: +lat,
         lng: +long
