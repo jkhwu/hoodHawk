@@ -1,12 +1,16 @@
 var block = ''
 var blockGroup = ''
 var zip = ''
+var lat = ""
+var long = ""
 
 $('#submit').on('click', function() {
+
 
     event.preventDefault()
     var address = $('#address').val()
     var zipCode = $('#zip').val()
+    
     initial()
 
     function initial() {
@@ -26,9 +30,20 @@ $('#submit').on('click', function() {
             data: {}
         }).then(function(data) {
             console.log(data)
-            block = data[0].address_info.block_id
-            blockGroup = data[0].address_info.blockgroup_id
-            zip = data[0].address_info.zipcode
+            block = data[0].address_info.block_id ,
+            blockGroup = data[0].address_info.blockgroup_id ,
+            zip = data[0].address_info.zipcode ,
+            lat = data[0].address_info.lat ,
+            long = data[0].address_info.lng ,
+            bathrooms = data[0]["property/details"].result.property.total_bath_count,
+            bedrooms = data[0]["property/details"].result.property.number_of_bedrooms,
+            airConditioning = data[0]["property/details"].result.property.air_conditioning,
+            heating = data[0]["property/details"].result.property.heating,
+            propertyType = data[0]["property/details"].result.property.property_type,
+            squareFeet = data[0]["property/details"].result.property.building_area_sq_ft,
+            assessedValue = data[0]["property/details"].result.assessment.total_assessed_value,
+            assessmentYear = data[0]["property/details"].result.assessment.assessment_year,
+            propertyTax = data[0]["property/details"].result.assessment.tax_amount,
 
             crime()
             blockgroup()
