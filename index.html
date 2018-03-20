@@ -21,7 +21,7 @@
         </div>
     </nav>
 
-    <!-- Header Section -->
+    <!-- Header and Parallax Image 1 -->
     <div id="index-banner" class="parallax-container">
         <div class="section no-pad-bot">
             <div class="container">
@@ -31,7 +31,7 @@
                     <h5 class="header col s12 light">Real estate data at your fingertips</h5>
                 </div>
                 <!-- Form Section -->
-                <div class="row center">
+                <div id="formZone" class="row center">
                     <form class="col s10 offset-s1">
                         <div class="input-field col s6">
                             <i class="material-icons prefix">home</i>
@@ -53,48 +53,76 @@
     </div>
 
     <!--   Map and Data Section   -->
-    <div class="section">
+    <div id="mapDataSection" class="section">
         <div class="row">
-            <h4 id = "addressHeader" class = "center-align"></h4>
+            <h4 id="addressHeader" class="center-align"></h4>
         </div>
         <div class="row">
-            <div class="col s12 m8">
-                <div id="mapZone">
-                    <!-- map here -->
-                    <div id="map"></div>
-                    <!-- pano here -->
-                    <div id="pano"></div>
-                </div>
+            <div id="mapZone" class="col s12 m8">
+                <!-- map here -->
+                <div id="map"></div>
+                <!-- pano here -->
+                <div id="pano"></div>
             </div>
-            <div id="col s12 m4">
-                <div id="dataZone">
-                    <h2 class="center brown-text"><i class="material-icons">hotel</i></h2>
-                    <h2 class="center brown-text"><i class="material-icons">hot_tub</i></h2>
-                    <h2 class="center brown-text"><i class="material-icons">whatshot</i></h2>
-                    <h2 class="center brown-text"><i class="material-icons">ac_unit</i></h2>
-                    <h5 class="center">Easy to work with</h5>
-
-                    <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            <div id="dataZone" class="col s12 m4">
+                <div class="row">
+                    <div class="col m3 cyan-text center-align">
+                        <i class="material-icons">hotel</i>
+                        <span id="numBed" class="roomCount">2</span>
+                    </div>
+                    <div class="col m3 cyan-text center-align">
+                        <i class="material-icons">hot_tub </i>
+                        <span id="numBath" class="roomCount">2</span>
+                    </div>
+                    <!-- Toggle this color to blue if property has heat -->
+                    <div class="col m3 center-align blue-grey-text text-lighten-4">
+                        <i class="material-icons">whatshot</i>
+                        <span class="roomCount"></span>
+                    </div>
+                    <!-- Toggle this color to red if property has AC -->
+                    <div class="col m3 center-align blue-grey-text text-lighten-4 ">
+                        <i class="material-icons">ac_unit</i>
+                        <span class="roomCount"></span>
+                    </div>
                 </div>
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">filter_drama</i>Details</div>
+                        <div class="collapsible-body">
+                            <p>Square Feet: <span id="sqFtText"></span></p>
+                            <p>Property Type: <span id="propTypeText"></span></p>
+                            <p>Assessed Value: <span id="assessedValueText"></span></p>
+                            <p>Rental Value: <span id="rentalValueText"></span></p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+                        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
 
-<!-- parallax image -->
+    <!-- Parallax Image 2 -->
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <!-- <h5 class="header col s12 light">Real estate data at your fingertips</h5> -->
+                    <h5 class="header col s12 light">[slogan sentence TBD]</h5>
                 </div>
             </div>
         </div>
         <div class="parallax"><img src="assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
     </div>
 
+    <!-- TBD Section -->
     <div class="container">
         <div class="section">
-
             <div class="row">
                 <div class="col s12 center">
                     <h3><i class="mdi-content-send brown-text"></i></h3>
@@ -110,18 +138,19 @@
         </div>
     </div>
 
-<!-- parallax image -->
+    <!-- Parallax Image 3 -->
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <!-- <h5 class="header col s12 light">Real estate data at your fingertips</h5> -->
+                    <h5 class="header col s12 light">[slogan sentence TBD]</h5>
                 </div>
             </div>
         </div>
         <div class="parallax"><img src="assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
     </div>
 
+    <!-- footer -->
     <footer class="page-footer cyan">
         <div class="container">
             <div class="row">
@@ -148,13 +177,13 @@
         </div>
     </footer>
 
-        <!-- jQuery first, then Popper.js, then Materialize JS and init JS, then Moment.JS, then Firebase.js -->
-        <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
-        <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script> -->
-        <script src="assets/js/materialize.js"></script>
-        <script src="assets/js/init.js"></script>
-        <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
+    <!-- jQuery first, then Popper.js, then Materialize JS and init JS, then Moment.JS, then Firebase.js -->
+    <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
+    <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js' integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q' crossorigin='anonymous'></script> -->
+    <script src="assets/js/materialize.js"></script>
+    <script src="assets/js/init.js"></script>
+    <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 
     <!--        local js files         -->
     <script src='assets/js/firebase.js'></script>
