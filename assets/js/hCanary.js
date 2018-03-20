@@ -6,11 +6,10 @@ var long = ""
 
 $('#submit').on('click', function() {
 
-
     event.preventDefault()
     var address = $('#addressInput').val()
     var zipCode = $('#zipCodeInput').val()
-    
+
     initial()
 
     function initial() {
@@ -37,25 +36,26 @@ $('#submit').on('click', function() {
             long = data[0].address_info.lng
             $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
             $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
+            $("#bed, #bath").removeClass("blue-grey-text text-lighten-4").addClass("cyan-text")
             airConditioning = data[0]["property/details"].result.property.air_conditioning
-            if (airConditioning === null ) {
+            if (airConditioning === null) {
                 $("#icy").removeClass("blue-text")
-                $("#icy").addClass("blue-grey-text")
+                $("#icy").addClass("blue-grey-text text-lighten-4")
             } else {
-                $("#icy").removeClass("blue-grey-text")
+                $("#icy").removeClass("blue-grey-text text-lighten-4")
                 $("#icy").addClass("blue-text")
             }
             heating = data[0]["property/details"].result.property.heating
-            if (heating === null ) {
+            if (heating === null) {
                 $("#fire").removeClass("deep-orange-text")
-                $("#fire").addClass("blue-grey-text")
+                $("#fire").addClass("blue-grey-text text-lighten-4")
             } else {
-                $("#fire").removeClass("blue-grey-text")
+                $("#fire").removeClass("blue-grey-text text-lighten-4")
                 $("#fire").addClass("deep-orange-text")
             }
             $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
             $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft)
-            $("#assessedValueText").text(data[0]["property/details"].result.assessment.total_assessed_value)
+            $("#assessedValueText").text(data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString())
             assessmentYear = data[0]["property/details"].result.assessment.assessment_year
             propertyTax = data[0]["property/details"].result.assessment.tax_amount
             $("#addressHeader").text(data[0].address_info.address_full)
@@ -88,7 +88,7 @@ $('#submit').on('click', function() {
             nationalPct = data[0]["block/crime"].result.all.nation_percentile
             numberIncidents = data[0]["block/crime"].result.all.incidents
             countyPct = data[0]["block/crime"].result.all.county_percentile
-            
+
         });
     }
 
