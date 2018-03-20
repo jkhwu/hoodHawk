@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+var lat = 32.715736
+var lng = -117.161087
+
 function initMap() {
-    console.log(lat)
     var myLocation = {
         lat: +lat,
         lng: +long

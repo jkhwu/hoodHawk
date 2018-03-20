@@ -35,16 +35,30 @@ $('#submit').on('click', function() {
             zip = data[0].address_info.zipcode
             lat = data[0].address_info.lat
             long = data[0].address_info.lng
-            bathrooms = data[0]["property/details"].result.property.total_bath_count
-            bedrooms = data[0]["property/details"].result.property.number_of_bedrooms
+            $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
+            $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
             airConditioning = data[0]["property/details"].result.property.air_conditioning
+            if (airConditioning === null ) {
+                $("#icy").removeClass("blue-text")
+                $("#icy").addClass("blue-grey-text")
+            } else {
+                $("#icy").removeClass("blue-grey-text")
+                $("#icy").addClass("blue-text")
+            }
             heating = data[0]["property/details"].result.property.heating
-            propertyType = data[0]["property/details"].result.property.property_type
-            squareFeet = data[0]["property/details"].result.property.building_area_sq_ft
-            assessedValue = data[0]["property/details"].result.assessment.total_assessed_value
+            if (heating === null ) {
+                $("#fire").removeClass("deep-orange-text")
+                $("#fire").addClass("blue-grey-text")
+            } else {
+                $("#fire").removeClass("blue-grey-text")
+                $("#fire").addClass("deep-orange-text")
+            }
+            $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
+            $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft)
+            $("#assessedValueText").text(data[0]["property/details"].result.assessment.total_assessed_value)
             assessmentYear = data[0]["property/details"].result.assessment.assessment_year
             propertyTax = data[0]["property/details"].result.assessment.tax_amount
-            $("#addressHeader").text(`${data[0].address_info.address_full}`)
+            $("#addressHeader").text(data[0].address_info.address_full)
             crime()
             blockgroup()
             zipdetail()
