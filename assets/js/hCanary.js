@@ -66,12 +66,13 @@
                         }
                         $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
                         $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft)
-                        $("#assessedValueText").text(data[0]["property/details"].result.assessment.total_assessed_value)
+                        $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value}`)
                         $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
                         $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount)
                         $("#addressHeader").text(data[0].address_info.address_full)
                         school()
-                        // crime()
+                        crime()
+                        rental()
                         // blockgroup()
                         // zipdetail()
                         initMap()
@@ -80,53 +81,80 @@
             }
 
 
-        // School Stats Call \\
+                    // School Stats Call \\
 
-            function school() {
-                var key = '6MHHSYNZLAN18I6Y5A3L'
-                var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3'
-                var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/property/school?address=${address}&zipcode=${zipCode}`
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader(
-                            'Authorization',
-                            'Basic ' + btoa(key + ":" + secret)
-                        );
-                    },
-                    data: {}
-                }).then(function(data) {
-                    console.log(data)
-            })
-        }
+                        function school() {
+                            var key = '6MHHSYNZLAN18I6Y5A3L'
+                            var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3'
+                            var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/property/school?address=${address}&zipcode=${zipCode}`
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader(
+                                        'Authorization',
+                                        'Basic ' + btoa(key + ":" + secret)
+                                    );
+                                },
+                                data: {}
+                            }).then(function(data) {
+                                console.log(data)
+                                $("#schoolsElem").text(data[0]["property/school"].result.school.elementary[0].name)
+                                $("#schoolsMiddle").text(data[0]["property/school"].result.school.middle[0].name)
+                                $("#schoolsHigh").text(data[0]["property/school"].result.school.high[0].name)
+                        })
+                    }
         
-        // Crime Stats Call \\
-            function crime() {
-                console.log(block)
-                console.log(blockGroup)
-                console.log(zip)
-                var key = '6MHHSYNZLAN18I6Y5A3L'
-                var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3'
-                var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/block/crime?block_id=${block}`
-                $.ajax({
-                    url: url,
-                    type: 'GET',
-                    beforeSend: function(xhr) {
-                        xhr.setRequestHeader(
-                            'Authorization',
-                            'Basic ' + btoa(key + ":" + secret)
-                        );
-                    },
-                    data: {}
-                }).then(function(data) {
-                    console.log(data)
-                    $("#crimePctNational").text(data[0]["block/crime"].result.all.nation_percentile)
-                    $("#crimeIncidents").text(data[0]["block/crime"].result.all.incidents)
-                    $("#crimePctCounty").text(data[0]["block/crime"].result.all.county_percentile)
-                    
-                });
-            }
+                    // Crime Stats Call \\
+                        function crime() {
+                            console.log(block)
+                            console.log(blockGroup)
+                            console.log(zip)
+                            var key = '6MHHSYNZLAN18I6Y5A3L'
+                            var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3'
+                            var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/block/crime?block_id=${block}`
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader(
+                                        'Authorization',
+                                        'Basic ' + btoa(key + ":" + secret)
+                                    );
+                                },
+                                data: {}
+                            }).then(function(data) {
+                                console.log(data)
+                                $("#crimePctNational").text(data[0]["block/crime"].result.all.nation_percentile)
+                                $("#crimeIncidents").text(data[0]["block/crime"].result.all.incidents)
+                                $("#crimePctCounty").text(data[0]["block/crime"].result.all.county_percentile)
+                                
+                        });
+                    }
+
+                    // Property Rental Stats Call \\
+                        function rental() {
+                            var key = '6MHHSYNZLAN18I6Y5A3L'
+                            var secret = 'WyiwLMO1DJy1R6AiQ4pAEjlNTMVDmpL3'
+                            var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/property/rental_yield?address=${address}&zipcode=${zipCode}`
+                            $.ajax({
+                                url: url,
+                                type: 'GET',
+                                beforeSend: function(xhr) {
+                                    xhr.setRequestHeader(
+                                        'Authorization',
+                                        'Basic ' + btoa(key + ":" + secret)
+                                    );
+                                },
+                                data: {}
+                            }).then(function(data) {
+                                console.log(data)
+                                $("#houseValue").text(`$${data[0]["property/rental_yield"].result.value}`)
+                                $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent} per month`)
+                                
+                        })
+                    }
+
 
             function blockgroup() {
                 var key = '6MHHSYNZLAN18I6Y5A3L'
