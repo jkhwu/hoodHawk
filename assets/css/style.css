@@ -1,3 +1,7 @@
+/* .header {
+    text-shadow: 2px 2px 10px black!important;
+} */
+
 #map,
 #pano {
     float: left;
@@ -14,46 +18,75 @@
     padding: 0;
 }
 
-.roomCount {
+#dataZone {
+    padding: 0;
+    padding-left: 30px;
+}
+
+.topIcon {
     font-size: 30px;
     margin-left: 10px;
 }
 
+.collapsible-body {
+    padding: 15px 20px 15px 20px;
+}
 
-/* .formContainer {
-    padding-top: 30px;
-    padding-bottom: 20px;
-    background-color: white;
-    margin-bottom: 100px;
-} */
+.slogan {
+    text-shadow: 2px 2px 3px black;
+}
+
+.formContainer {
+    padding: 30px 20px 20px 10px;
+    background-color: rgba(17, 14, 82, 0.4);
+    margin-bottom: 10px;
+    box-shadow: 0 0 20px 10px rgba(17, 14, 82, 0.4);
+    border-radius: 80px;
+}
+
+.formContainer::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 
 
 /* Form Colors Below */
 
 .input-field label {
     color: white!important;
+    text-shadow: 2px 2px 3px black;
 }
 
 .input-field input[type=text]:focus+label {
     color: #7ff!important;
+    text-shadow: 2px 2px 3px black;
 }
 
 .input-field input[type=number]:focus+label {
     color: #7ff!important;
+    text-shadow: 2px 2px 3px black;
 }
 
 .input-field input[type=text]:focus {
     border-bottom: 1px solid #7ff!important;
     box-shadow: 0 1px 0 0 #5cd!important;
+    text-shadow: 2px 2px 3px black;
 }
 
 .input-field input[type=number]:focus {
     border-bottom: 1px solid #7ff!important;
     box-shadow: 0 1px 0 0 #5cd!important;
+    text-shadow: 2px 2px 3px black;
 }
 
 .input-field .prefix.active {
     color: #7ff;
+    text-shadow: 2px 2px 3px black;
+}
+
+.input-field .prefix {
+    text-shadow: 2px 2px 3px black;
 }
 
 
