@@ -28,20 +28,22 @@
                 <br><br>
                 <h1 class="header center cyan-text text-accent-2">HoodHawk</h1>
                 <div class="row center">
-                    <h5 class="header col s12 light">Real estate data at your fingertips</h5>
+                    <h5 class="slogan header col s12">Enter an address to search</h5>
                 </div>
                 <!-- Form Section -->
                 <div id="formZone" class="row center">
                     <form class="col s10 offset-s1">
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">home</i>
-                            <input id="addressInput" type="text" required>
-                            <label for="addressInput">Street Address</label>
-                        </div>
-                        <div class="input-field col s6">
-                            <i class="material-icons prefix">local_post_office</i>
-                            <input id="zipCodeInput" type="number" required>
-                            <label for="zipCodeInput">U.S. Zip Code</label>
+                        <div class="formContainer">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">home</i>
+                                <input id="addressInput" type="text" required>
+                                <label for="addressInput">Street Address</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">local_post_office</i>
+                                <input id="zipCodeInput" type="number" required>
+                                <label for="zipCodeInput">U.S. Zip Code</label>
+                            </div>
                         </div>
                         <input id="submit" type="submit" value="Get Info" class="btn-large waves-effect waves-light cyan">
                     </form>
@@ -55,7 +57,7 @@
     <!--   Map and Data Section   -->
     <div id="mapDataSection" class="section">
         <div class="row">
-            <h4 id="addressHeader" class="center-align"></h4>
+            <h4 id="addressHeader" class="center-align cyan-text"></h4>
         </div>
         <div class="row">
             <div id="mapZone" class="col s12 m8">
@@ -65,125 +67,155 @@
                 <div id="pano"></div>
             </div>
             <div id="dataZone" class="col s12 m4">
-                <div class="row">
-                    <div class="col m3 cyan-text center-align">
+                <div id="topIcons" class="row">
+                    <div id="bed" class="col m3 blue-grey-text text-lighten-4 center-align">
                         <i class="material-icons">hotel</i>
-                        <span id="numBed" class="roomCount">2</span>
+                        <span id="numBed" class="topIcon"></span>
                     </div>
-                    <div class="col m3 cyan-text center-align">
+                    <div id="bath" class="col m3 blue-grey-text text-lighten-4 center-align">
                         <i class="material-icons">hot_tub </i>
-                        <span id="numBath" class="roomCount">2</span>
+                        <span id="numBath" class="topIcon"></span>
                     </div>
                     <!-- Toggle this color to blue if property has heat -->
-                    <div id = "fire" class="col m3 center-align text-lighten-4">
+                    <div id="fire" class="col m3 center-align blue-grey-text text-lighten-4">
                         <i class="material-icons">whatshot</i>
-                        <span class="roomCount"></span>
+                        <span class="topIcon"></span>
                     </div>
                     <!-- Toggle this color to red if property has AC -->
-                    <div id = "icy" class="col m3 center-align text-lighten-4 ">
+                    <div id="icy" class="col m3 center-align blue-grey-text text-lighten-4 ">
                         <i class="material-icons">ac_unit</i>
-                        <span class="roomCount"></span>
+                        <span class="topIcon"></span>
                     </div>
                 </div>
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">details</i>Essentials</div>
+                        <div class="collapsible-header"><i class="material-icons">view_list</i>Essentials</div>
                         <div class="collapsible-body">
-                            <ul>
-                                <strong>Square Feet: </strong>
-                                <span id="sqFtText">10</span>
-                            </ul>
-                            <ul>
-                                <strong>Property Type: </strong>
-                                <span id="propTypeText">tiny home</span>
-                            </ul>
-                            <ul>
-                                <strong>Assessed Value: </strong> $<span id="assessedValueText">100000</span> (as of
-                                <span id="assessmentYearText">1900</span>)
-                            </ul>
-                            <ul>
-                                <strong>Rental Value: </strong> $<span id="rentalValueText">5</span> per month
-                            </ul>
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Square Feet:</th>
+                                        <td id="sqFtText">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Property Type:</th>
+                                        <td id="propTypeText">tiny home</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assessed Value:</th>
+                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
+                                            <span id="assessmentYearText">1900</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rental Value:</th>
+                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">details</i>Affordability</div>
+                        <div class="collapsible-header"><i class="material-icons">attach_money</i>Affordability</div>
                         <div class="collapsible-body">
-                            <ul>
-                                <strong>Square Feet: </strong>
-                                <span id="sqFtText">10</span>
-                            </ul>
-                            <ul>
-                                <strong>Property Type: </strong>
-                                <span id="propTypeText">tiny home</span>
-                            </ul>
-                            <ul>
-                                <strong>Assessed Value: </strong> $<span id="assessedValueText">100000</span> (as of
-                                <span id="assessmentYearText">1900</span>)
-                            </ul>
-                            <ul>
-                                <strong>Rental Value: </strong> $<span id="rentalValueText">5</span> per month
-                            </ul>
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Square Feet:</th>
+                                        <td id="sqFtText">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Property Type:</th>
+                                        <td id="propTypeText">tiny home</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assessed Value:</th>
+                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
+                                            <span id="assessmentYearText">1900</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rental Value:</th>
+                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">place</i>Crime Stats</div>
+                        <div class="collapsible-header"><i class="material-icons">lock_outline</i>Crime Stats</div>
                         <div class="collapsible-body">
-                            <ul>
-                                <strong>Square Feet: </strong>
-                                <span id="sqFtText">10</span>
-                            </ul>
-                            <ul>
-                                <strong>Property Type: </strong>
-                                <span id="propTypeText">tiny home</span>
-                            </ul>
-                            <ul>
-                                <strong>Assessed Value: </strong> $<span id="assessedValueText">100000</span> (as of
-                                <span id="assessmentYearText">1900</span>)
-                            </ul>
-                            <ul>
-                                <strong>Rental Value: </strong> $<span id="rentalValueText">5</span> per month
-                            </ul>
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Square Feet:</th>
+                                        <td id="sqFtText">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Property Type:</th>
+                                        <td id="propTypeText">tiny home</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assessed Value:</th>
+                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
+                                            <span id="assessmentYearText">1900</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rental Value:</th>
+                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Schools</div>
+                        <div class="collapsible-header"><i class="material-icons">school</i>Schools</div>
                         <div class="collapsible-body">
-                            <ul>
-                                <strong>Square Feet: </strong>
-                                <span id="sqFtText">10</span>
-                            </ul>
-                            <ul>
-                                <strong>Property Type: </strong>
-                                <span id="propTypeText">tiny home</span>
-                            </ul>
-                            <ul>
-                                <strong>Assessed Value: </strong> $<span id="assessedValueText">100000</span> (as of
-                                <span id="assessmentYearText">1900</span>)
-                            </ul>
-                            <ul>
-                                <strong>Rental Value: </strong> $<span id="rentalValueText">5</span> per month
-                            </ul>
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Square Feet:</th>
+                                        <td id="sqFtText">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Property Type:</th>
+                                        <td id="propTypeText">tiny home</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assessed Value:</th>
+                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
+                                            <span id="assessmentYearText">1900</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rental Value:</th>
+                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">whatshot</i>Natural Disaster Risk</div>
+                        <div class="collapsible-header"><i class="material-icons">flash_on</i>Natural Disaster Risk</div>
                         <div class="collapsible-body">
-                            <ul>
-                                <strong>Square Feet: </strong>
-                                <span id="sqFtText">10</span>
-                            </ul>
-                            <ul>
-                                <strong>Property Type: </strong>
-                                <span id="propTypeText">tiny home</span>
-                            </ul>
-                            <ul>
-                                <strong>Assessed Value: </strong> $<span id="assessedValueText">100000</span> (as of
-                                <span id="assessmentYearText">1900</span>)
-                            </ul>
-                            <ul>
-                                <strong>Rental Value: </strong> $<span id="rentalValueText">5</span> per month
-                            </ul>
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th>Square Feet:</th>
+                                        <td id="sqFtText">10</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Property Type:</th>
+                                        <td id="propTypeText">tiny home</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Assessed Value:</th>
+                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
+                                            <span id="assessmentYearText">1900</span>)</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Rental Value:</th>
+                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </li>
                 </ul>
@@ -196,7 +228,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h5 class="header col s12 light">[slogan sentence TBD]</h5>
+                    <h5 class="slogan header col s12">Real estate data at your fingertips</h5>
                 </div>
             </div>
         </div>
@@ -226,7 +258,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h5 class="header col s12 light">[slogan sentence TBD]</h5>
+                    <h5 class="slogan header col s12">Informing your investments</h5>
                 </div>
             </div>
         </div>
