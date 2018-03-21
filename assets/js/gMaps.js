@@ -34,8 +34,6 @@ function launchMap() {
         });
     map.setStreetView(panorama);
 }
-// var lat = 32.715736
-// var lng = -117.161087
 
 function initMap() {
     var myLocation = {
@@ -57,13 +55,5 @@ function initMap() {
                 pitch: 10
             }
         });
-    //   var myMarker = new google.maps.Marker({
-    //       position: {
-    //         lat: 32.851721,
-    //         lng: -117.182813},
-    //       map: map,
-    //       icon: 'https://chart.googleapis.com/chart?chst=d_bubble_icon_text_small&chld=ski|bb|HERE|FFFFFF|000000',
-    //       title: 'myMarker'
-    //     });
     map.setStreetView(panorama);
 }
