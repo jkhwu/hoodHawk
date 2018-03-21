@@ -7,13 +7,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
         var js_file = document.createElement('script');
         js_file.type = 'text/javascript';
-        js_file.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCaSVlHx6Mx2guFHDJUQTWgI-ZUf7dyUjw&callback=initMap&language=' + lang;
+        js_file.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyCaSVlHx6Mx2guFHDJUQTWgI-ZUf7dyUjw&callback=launchMap&language=' + lang;
         document.getElementsByTagName('head')[0].appendChild(js_file);
     }
 });
 
-var lat = 32.715736
-var lng = -117.161087
+function launchMap() {
+    var myLocation = {
+        lat: 37.421999900,
+        lng: -122.084057500
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 37.421999900,
+            lng: -122.084057500
+        },
+        zoom: 14
+    });
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+            position: myLocation,
+            pov: {
+                heading: 34,
+                pitch: 10
+            }
+        });
+    map.setStreetView(panorama);
+}
+// var lat = 32.715736
+// var lng = -117.161087
 
 function initMap() {
     var myLocation = {
