@@ -1,278 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<!doctype html>
+<html lang='en'>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>HoodHawk | Real Estate Data</title>
-
-    <!-- CSS  -->
+    <title>HoodHawk Login</title>
+    <!-- Required meta tags -->
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no'>
+    <!-- Bootstrap CSS -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel='stylesheet' href='assets/css/style.css'>
 </head>
-
-<body>
-
-    <!-- Navbar -->
-    <nav class="white">
-        <div class="nav-wrapper clearfix">
-            <a href="#" class="brand-logo"><img id="navLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="#" class="cyan-text">TBD</a></li>
-                <li><a href="#" class="cyan-text">Favorites</a></li>
-                <li><a href="#" class="cyan-text">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Header and Parallax Image 1 -->
+<body class="loginPage">
     <div id="index-banner" class="parallax-container">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <br><br>
-                <div class="row center">
-                    <h5 class="slogan header col s12">Enter an address to search</h5>
-                </div>
-                <!-- Form Section -->
-                <div id="formZone" class="row center">
-                    <form class="col s10 offset-s1">
-                        <div class="formContainer clearfix">
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">home</i>
-                                <input id="addressInput" type="text" required>
-                                <label for="addressInput">Street Address</label>
+            <div class="section no-pad-bot">
+                    <a href="#" class="brand-logo"><img id="loginLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
+                <div class="container">
+                    <br><br>
+                    <div class="row center">
+                        <h5 class="slogan header col s12">Please Log In</h5>
+                    </div>
+                    <!-- Form Section -->
+                    <div id="formZone" class="row center">
+                        <form class="col s10 offset-s1">
+                            <div class="formContainer clearfix">
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">account_circle</i>
+                                    <input id="icon_prefix" type="text" class="validate">
+                                    <label for="icon_prefix">Username</label>
+                                </div>
+                                <div class="input-field col s6">
+                                    <i class="material-icons prefix">lock_outline</i>
+                                    <input id="icon_telephone" type="tel" class="validate">
+                                    <label for="icon_telephone">Password</label>
+                                </div>
                             </div>
-                            <div class="input-field col s6">
-                                <i class="material-icons prefix">local_post_office</i>
-                                <input id="zipCodeInput" type="number" required>
-                                <label for="zipCodeInput">U.S. Zip Code</label>
-                            </div>
-                        </div>
-                        <input id="submit" type="submit" value="Get Info" class="btn-large waves-effect waves-light cyan">
-                    </form>
-                </div>
-                <!-- <br><br> -->
-            </div>
-        </div>
-        <div class="parallax"><img src="assets/images/background1.jpg" alt="Unsplashed background img 1"></div>
-    </div>
-
-    <!--   Map and Data Section   -->
-    <div id="mapDataSection" class="section">
-        <div class="row">
-            <h4 id="addressHeader" class="center-align cyan-text"></h4>
-        </div>
-        <div class="row">
-            <div id="mapZone" class="col s12 m8">
-                <!-- map here -->
-                <div id="map"></div>
-                <!-- pano here -->
-                <div id="pano"></div>
-            </div>
-            <div id="dataZone" class="col s12 m4">
-                <div id="topIcons" class="row">
-                    <div id="bed" class="col m3 blue-grey-text text-lighten-4 center-align">
-                        <i class="material-icons">hotel</i>
-                        <span id="numBed" class="topIcon"></span>
+                            <input id="logIn" type="submit" value="Log In" class="btn-large waves-effect waves-light cyan">
+                        </form>
                     </div>
-                    <div id="bath" class="col m3 blue-grey-text text-lighten-4 center-align">
-                        <i class="material-icons">hot_tub </i>
-                        <span id="numBath" class="topIcon"></span>
-                    </div>
-                    <!-- Toggle this color to blue if property has heat -->
-                    <div id="fire" class="col m3 center-align blue-grey-text text-lighten-4">
-                        <i class="material-icons">whatshot</i>
-                        <span class="topIcon"></span>
-                    </div>
-                    <!-- Toggle this color to red if property has AC -->
-                    <div id="icy" class="col m3 center-align blue-grey-text text-lighten-4 ">
-                        <i class="material-icons">ac_unit</i>
-                        <span class="topIcon"></span>
-                    </div>
-                </div>
-                <ul class="collapsible" data-collapsible="accordion">
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">view_list</i>Essentials</div>
-                        <div class="collapsible-body">
-                            <table class="bordered centered responsive-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Square Feet:</th>
-                                        <td id="sqFtText"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Property Type:</th>
-                                        <td id="propTypeText"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Assessed Value:</th>
-                                        <td><span id="assessedValueText"></span> (as of
-                                            <span id="assessmentYearText"></span>)</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">attach_money</i>Affordability</div>
-                        <div class="collapsible-body">
-                            <table class="bordered centered responsive-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Value:</th>
-                                        <td id="houseValue"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Monthly Rent:</th>
-                                        <td id="monthlyRent"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Mortgage:</th>
-                                        <td id="mortgage"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">lock_outline</i>Crime Stats</div>
-                        <div class="collapsible-body">
-                            <table class="bordered centered responsive-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Incidents:</th>
-                                        <td id="crimeIncidents"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>County Percentile:</th>
-                                        <td id="crimePctCounty"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>National Percentile:</th>
-                                        <td id="crimePctNational"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">school</i>Schools</div>
-                        <div class="collapsible-body">
-                            <table class="bordered centered responsive-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Elementary:</th>
-                                        <td id="schoolsElem"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>Middle:</th>
-                                        <td id="schoolsMiddle"></td>
-                                    </tr>
-                                    <tr>
-                                        <th>High:</th>
-                                        <td id="schoolsHigh"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="collapsible-header"><i class="material-icons">flash_on</i>Natural Disaster Risk</div>
-                        <div class="collapsible-body">
-                            <table class="bordered centered responsive-table">
-                                <tbody>
-                                    <tr>
-                                        <th>Square Feet:</th>
-                                        <td id="sqFtText">10</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Property Type:</th>
-                                        <td id="propTypeText">tiny home</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Assessed Value:</th>
-                                        <td id="sqFtText">$<span id="assessedValueText">100000</span> (as of
-                                            <span id="assessmentYearText">1900</span>)</td>
-                                    </tr>
-                                    <tr>
-                                        <th>Rental Value:</th>
-                                        <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Parallax Image 2 -->
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    <h5 class="slogan header col s12">Real estate data at your fingertips</h5>
+                    <br><br>
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="assets/images/background2.jpg" alt="Unsplashed background img 2"></div>
-    </div>
 
-    <!-- TBD Section -->
-    <div class="container">
-        <div class="section">
-            <div class="row">
-                <div class="col s12 center">
-                    <h3><i class="mdi-content-send brown-text"></i></h3>
-                    <h4>[Section TBD]</h4>
-                    <p class="left-align light">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices
-                        eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio condimentum sed ipsum ac, gravida ultrices
-                        erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-                    </p>
-                </div>
-            </div>
 
-        </div>
-    </div>
-
-    <!-- Parallax Image 3 -->
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    <h5 class="slogan header col s12">Informing your investments</h5>
-                </div>
-            </div>
-        </div>
-        <div class="parallax"><img src="assets/images/background3.jpg" alt="Unsplashed background img 3"></div>
-    </div>
-
-    <!-- footer -->
-    <footer class="page-footer cyan">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Team Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of web developers passionate about informing your real estate decisions with the best data available.</p>
-                </div>
-                <div class="col l3 s12"></div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect with Us</h5>
-                    <ul>
-                        <li><a class="white-text" href="https://github.com/abuckstopshere" target="_blank">Andrew's Github</a></li>
-                        <li><a class="white-text" href="https://github.com/jkhwu" target="_blank">Janet's Github</a></li>
-                        <li><a class="white-text" href="https://github.com/jmbuckley" target="_blank">Justin's Github</a></li>
-                        <li><a class="white-text" href="https://github.com/ryanv027" target="_blank">Ryan's Github</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-        </div>
-    </footer>
 
     <!-- jQuery first, then Popper.js, then Materialize JS and init JS, then Moment.JS, then Firebase.js -->
     <script src='https://code.jquery.com/jquery-3.3.1.js' integrity='sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=' crossorigin='anonymous'></script>
@@ -287,7 +57,5 @@
     <script src='assets/js/gMaps.js'></script>
     <script src='assets/js/hCanary.js'></script>
     <script src='assets/js/main.js'></script>
-
 </body>
-
 </html>
