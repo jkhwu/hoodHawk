@@ -66,10 +66,10 @@
                       $("#fire").addClass("deep-orange-text")
                   }
                   $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
-                  $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft)
-                  $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value}`)
+                  $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft.toLocaleString())
+                  $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString()}`);
                   $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
-                  $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount)
+                  $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString());
                   $("#addressHeader").text(data[0].address_info.address_full)
                   school()
                   crime()
@@ -100,9 +100,9 @@
               data: {}
           }).then(function(data) {
               console.log(data)
-              $("#schoolsElem").text(data[0]["property/school"].result.school.elementary[0].name)
-              $("#schoolsMiddle").text(data[0]["property/school"].result.school.middle[0].name)
-              $("#schoolsHigh").text(data[0]["property/school"].result.school.high[0].name)
+              $("#schoolsElem").text(titleCase(data[0]["property/school"].result.school.elementary[0].name))
+              $("#schoolsMiddle").text(titleCase(data[0]["property/school"].result.school.middle[0].name))
+              $("#schoolsHigh").text(titleCase(data[0]["property/school"].result.school.high[0].name))
           })
       }
 
@@ -150,10 +150,19 @@
               data: {}
           }).then(function(data) {
               console.log(data)
-              $("#houseValue").text(`$${data[0]["property/rental_yield"].result.value}`)
-              $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent} per month`)
+              $("#houseValue").text(`$${data[0]["property/rental_yield"].result.value.toLocaleString()}`);
+              $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`);
 
           })
+      }
+
+      // Rewrite strings so only first letter is capitalized \\
+      function titleCase(str) {
+          var splitStr = str.toLowerCase().split(' ');
+          for (var i = 0; i < splitStr.length; i++) {
+              splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+          }
+          return splitStr.join(' ');
       }
 
 
