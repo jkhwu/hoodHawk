@@ -44,10 +44,16 @@
     border-radius: 20px;
 }
 
-.formContainer::after {
+.clearfix::after {
     content: "";
     clear: both;
     display: table;
+}
+
+#navLogo {
+    height: 60px;
+    padding-top: 5px;
+    padding-left: 5px;
 }
 
 
