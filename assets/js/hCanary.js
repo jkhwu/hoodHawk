@@ -99,9 +99,9 @@
                                 data: {}
                             }).then(function(data) {
                                 console.log(data)
-                                $("#schoolsElem").text(data[0]["property/school"].result.school.elementary[0].name)
-                                $("#schoolsMiddle").text(data[0]["property/school"].result.school.middle[0].name)
-                                $("#schoolsHigh").text(data[0]["property/school"].result.school.high[0].name)
+                                $("#schoolsElem").text(titleCase(data[0]["property/school"].result.school.elementary[0].name))
+                                $("#schoolsMiddle").text(titleCase(data[0]["property/school"].result.school.middle[0].name))
+                                $("#schoolsHigh").text(titleCase(data[0]["property/school"].result.school.high[0].name))
                         })
                     }
         
@@ -154,6 +154,15 @@
                                 
                         })
                     }
+
+                    // Rewrite strings so only first letter is capitalized \\
+                        function titleCase(str) {
+                            var splitStr = str.toLowerCase().split(' ');
+                            for (var i = 0; i < splitStr.length; i++) {
+                                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+                            }
+                            return splitStr.join(' '); 
+                            }
 
 
             function blockgroup() {
