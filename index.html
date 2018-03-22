@@ -15,9 +15,14 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="white" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">[Logo TBD]</a>
+    <nav class="white">
+        <div class="nav-wrapper clearfix">
+            <a href="#" class="brand-logo"><img id="navLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#" class="cyan-text">TBD</a></li>
+                <li><a href="#" class="cyan-text">Favorites</a></li>
+                <li><a href="#" class="cyan-text">Logout</a></li>
+            </ul>
         </div>
     </nav>
 
@@ -26,14 +31,13 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <br><br>
-                <h1 class="header center cyan-text text-accent-2">HoodHawk</h1>
                 <div class="row center">
                     <h5 class="slogan header col s12">Enter an address to search</h5>
                 </div>
                 <!-- Form Section -->
                 <div id="formZone" class="row center">
                     <form class="col s10 offset-s1">
-                        <div class="formContainer">
+                        <div class="formContainer clearfix">
                             <div class="input-field col s6">
                                 <i class="material-icons prefix">home</i>
                                 <input id="addressInput" type="text" required>
@@ -48,7 +52,7 @@
                         <input id="submit" type="submit" value="Get Info" class="btn-large waves-effect waves-light cyan">
                     </form>
                 </div>
-                <br><br>
+                <!-- <br><br> -->
             </div>
         </div>
         <div class="parallax"><img src="assets/images/background1.jpg" alt="Unsplashed background img 1"></div>
@@ -94,15 +98,15 @@
                             <table class="bordered centered responsive-table">
                                 <tbody>
                                     <tr>
-                                        <th>Square Feet :</th>
+                                        <th>Square Feet:</th>
                                         <td id="sqFtText"></td>
                                     </tr>
                                     <tr>
-                                        <th>Property Type :</th>
+                                        <th>Property Type:</th>
                                         <td id="propTypeText"></td>
                                     </tr>
                                     <tr>
-                                        <th>Assessed Value :</th>
+                                        <th>Assessed Value:</th>
                                         <td><span id="assessedValueText"></span> (as of
                                             <span id="assessmentYearText"></span>)</td>
                                     </tr>
@@ -116,15 +120,15 @@
                             <table class="bordered centered responsive-table">
                                 <tbody>
                                     <tr>
-                                        <th>Value :</th>
+                                        <th>Value:</th>
                                         <td id="houseValue"></td>
                                     </tr>
                                     <tr>
-                                        <th>Monthly Rent :</th>
+                                        <th>Monthly Rent:</th>
                                         <td id="monthlyRent"></td>
                                     </tr>
                                     <tr>
-                                        <th>Mortgage :</th>
+                                        <th>Mortgage:</th>
                                         <td id="mortgage"></td>
                                     </tr>
                                 </tbody>
@@ -137,15 +141,15 @@
                             <table class="bordered centered responsive-table">
                                 <tbody>
                                     <tr>
-                                        <th>Incidents :</th>
+                                        <th>Incidents:</th>
                                         <td id="crimeIncidents"></td>
                                     </tr>
                                     <tr>
-                                        <th>County Percentile :</th>
+                                        <th>County Percentile:</th>
                                         <td id="crimePctCounty"></td>
                                     </tr>
                                     <tr>
-                                        <th>National Percentile :</th>
+                                        <th>National Percentile:</th>
                                         <td id="crimePctNational"></td>
                                     </tr>
                                 </tbody>
@@ -158,15 +162,15 @@
                             <table class="bordered centered responsive-table">
                                 <tbody>
                                     <tr>
-                                        <th>Elementary :</th>
+                                        <th>Elementary:</th>
                                         <td id="schoolsElem"></td>
                                     </tr>
                                     <tr>
-                                        <th>Middle :</th>
+                                        <th>Middle:</th>
                                         <td id="schoolsMiddle"></td>
                                     </tr>
                                     <tr>
-                                        <th>High :</th>
+                                        <th>High:</th>
                                         <td id="schoolsHigh"></td>
                                     </tr>
                                 </tbody>
@@ -267,9 +271,6 @@
             </div>
         </div>
         <div class="footer-copyright">
-            <div class="container">
-                Made with <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-            </div>
         </div>
     </footer>
 
