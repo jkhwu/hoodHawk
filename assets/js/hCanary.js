@@ -49,6 +49,7 @@
                   zip = data[0].address_info.zipcode
                   lat = data[0].address_info.lat
                   long = data[0].address_info.lng
+                  $("#addressHeader").text(data[0].address_info.address_full)
                   $("#bed, #bath").removeClass("blue-grey-text text-lighten-4").addClass("cyan-text");
                   $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
                   $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
@@ -66,13 +67,26 @@
                       $("#fire").removeClass("blue-grey-text text-lighten-4")
                       $("#fire").addClass("deep-orange-text")
                   }
-                  $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft.toLocaleString())
-                  $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
-                  $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString()}`)
-                  $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
+                  sqFt = data[0]["property/details"].result.property.building_area_sq_ft
+                  $("essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+                  $("#sqFtText").text(sqFt.toLocaleString())
 
-                  $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString())
-                  $("#addressHeader").text(data[0].address_info.address_full)
+                  propType = data[0]["property/details"].result.property.property_type
+                  $("essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+                  $("#propTypeText").text(propType)
+
+                  assessedVal = data[0]["property/details"].result.assessment.total_assessed_value
+                  $("#assessedValueText").text(`$${assessedVal.toLocaleString()}`)
+                  $("essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+
+                  assessYr = data[0]["property/details"].result.assessment.assessment_year
+                  $("#assessmentYearText").text(assessYr)
+                  $("essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+
+                  propTax = data[0]["property/details"].result.assessment.tax_amount
+                  $("#propertyTax").text(propTax.toLocaleString())
+                  $("essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+
                   school()
                   crime()
                   rental()
