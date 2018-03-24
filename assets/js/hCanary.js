@@ -6,6 +6,7 @@
   var zip = ''
   var lat = ""
   var long = ""
+  var houseVal;
 
 
   //                 \\
@@ -151,9 +152,11 @@
               data: {}
           }).then(function(data) {
               console.log(data)
+              houseVal = data[0]["property/rental_yield"].result.value
+              console.log(houseVal)
               $("#houseValue").text(`$${data[0]["property/rental_yield"].result.value.toLocaleString()}`);
               $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`);
-
+              mortCalc()
           })
       }
 
