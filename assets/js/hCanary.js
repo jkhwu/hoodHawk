@@ -1,4 +1,3 @@
-
 //                \\
 // Global Variables \\
 //                    \\
@@ -9,6 +8,7 @@ var lat = ''
 var long = ''
 var address = ''
 var zipCode = ''
+var houseVal
 var key = 'UVFUMOJ62FUBUG8GSGQV'
 var secret = 'QHQs8W0L6HfJgHmY18wCG42CnHHctyUG'
 
@@ -44,7 +44,7 @@ function initial(address, zipCode) {
     }).then(function(data) {
         console.log(data)
         if (data[0]["property/details"].result === null) {
-            $("#addressHeader").text("Sorry! I couldn't find any information about that address.")
+            $("#addressHeader").html("Sorry! I couldn't find any information about that address.")
         } else {
             console.log('working call')
             var block = data[0].address_info.block_id
@@ -52,6 +52,7 @@ function initial(address, zipCode) {
             zip = data[0].address_info.zipcode
             lat = data[0].address_info.lat
             long = data[0].address_info.lng
+            $("#addressHeader").text(data[0].address_info.address_full).append('<br><a id="favorites" class="waves-effect waves-light btn cyan"><i class="material-icons left">star</i>Add to Favorites</a>')
             $("#bed, #bath").removeClass("blue-grey-text text-lighten-4").addClass("cyan-text");
             $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
             $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
@@ -69,12 +70,30 @@ function initial(address, zipCode) {
                 $("#fire").removeClass("blue-grey-text text-lighten-4")
                 $("#fire").addClass("deep-orange-text")
             }
-            $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
-            $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft.toLocaleString())
-            $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString()}`);
-            $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
-            $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString());
-            $("#addressHeader").text(data[0].address_info.address_full)
+
+            //sqft data
+            var sqFt = data[0]["property/details"].result.property.building_area_sq_ft
+            $("#essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
+            if (sqFt == null) $("#sqFtText").text("not available")
+            else $("#sqFtText").text(sqFt.toLocaleString())
+
+            var propType = data[0]["property/details"].result.property.property_type
+            $("#essentialsTable").append('<tr><th>Property Type:</th><td id="propTypeText"></td></tr>')
+            if (propType == null) $("#propTypeText").text("not available")
+            else $("#propTypeText").text(propType)
+
+            var assessedVal = data[0]["property/details"].result.assessment.total_assessed_value
+            var assessedYr = data[0]["property/details"].result.assessment.assessment_year
+            $("#essentialsTable").append('<tr><th>Assessed Value:</th><td><span id="assessedValueText"></span><span id="assessmentYearText"></span></td></tr>')
+            if (assessedVal == null) $("#assessedValueText").text("data not available")
+            else $("#assessedValueText").text(`$${assessedVal.toLocaleString()}`)
+            if (assessedYr == null) $("#assessmentYearText").text("(year of assessment not available)")
+            else $("#assessmentYearText").text(" (as of " + assessedYr + ")")
+
+
+            var propTax = data[0]["property/details"].result.assessment.tax_amount
+            $("#propertyTax").text(propTax.toLocaleString());
+
             initMap()
             school(address, zipCode)
             crime(block)
@@ -148,9 +167,10 @@ function rental(address, zipCode) {
         data: {}
     }).then(function(data) {
         console.log(data)
-        $("#houseValue").text(`$${data[0]["property/rental_yield"].result.value.toLocaleString()}`);
-        $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`);
-
+        houseVal = data[0]["property/rental_yield"].result.value
+        $("#houseValue").text(`$${houseVal.toLocaleString()}`)
+        $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`)
+        mortCalc()
     })
 }
 

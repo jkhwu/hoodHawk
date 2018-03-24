@@ -97,7 +97,7 @@
      $('#favoriteDisplay').html('')
  })
 
- $('#favorites').on('click', function() {
+ $('body').on('click', '#favorites', function() {
      console.log('fav button working')
      firebase.database().ref('/users/' + uid).update({
          favoriteAdd: address,
