@@ -9,8 +9,8 @@ var long = ''
 var address = ''
 var zipCode = ''
 var houseVal
-var key = 'UVFUMOJ62FUBUG8GSGQV'
-var secret = 'QHQs8W0L6HfJgHmY18wCG42CnHHctyUG'
+var key = '0Q2I3E0APS59RZARVAN9'
+var secret = 'ZDqVIaqdpd8YawvrIqNnB0HMJOwKLX0y'
 
 
 //                 \\
