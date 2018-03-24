@@ -30,7 +30,7 @@
 
          $('#logout').removeClass('hide')
          $('#logout').addClass('show')
-         window.location = "../../logged.html"
+         window.location = "file:///Users/RyanPalermo/Code/hoodHawk/logged.html"
      })
  }
 
