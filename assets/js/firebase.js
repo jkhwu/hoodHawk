@@ -59,7 +59,7 @@ if (signUp) {
                     displayName: "display"
                 });
             });
-        window.location = "https://ryanv027.github.io/hoodHawk/logged.html"
+        setTimeout(logIn, 4000)
     })
 }
 //listens for an authentication sign in and updates uid so we can retrieve stored info
