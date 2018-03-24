@@ -65,11 +65,12 @@
                       $("#fire").removeClass("blue-grey-text text-lighten-4")
                       $("#fire").addClass("deep-orange-text")
                   }
-                  $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
                   $("#sqFtText").text(data[0]["property/details"].result.property.building_area_sq_ft.toLocaleString())
-                  $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString()}`);
+                  $("#propTypeText").text(data[0]["property/details"].result.property.property_type)
+                  $("#assessedValueText").text(`$${data[0]["property/details"].result.assessment.total_assessed_value.toLocaleString()}`)
                   $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
-                  $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString());
+
+                  $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString())
                   $("#addressHeader").text(data[0].address_info.address_full)
                   school()
                   crime()
