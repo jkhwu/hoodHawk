@@ -25,7 +25,6 @@
           school(address, zipCode)
           crime(address, zipCode)
           rental(address, zipCode)
-          initMap()
       })
       // Main Data Call \\ 
   function initial(address, zipCode) {
@@ -77,7 +76,7 @@
               $("#assessmentYearText").text(data[0]["property/details"].result.assessment.assessment_year)
               $("#propertyTax").text(data[0]["property/details"].result.assessment.tax_amount.toLocaleString());
               $("#addressHeader").text(data[0].address_info.address_full)
-
+              initMap()
           }
       });
   }

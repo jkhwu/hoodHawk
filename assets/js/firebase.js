@@ -30,7 +30,7 @@
 
          $('#logout').removeClass('hide')
          $('#logout').addClass('show')
-             //window.location = "http://www.google.com"
+         window.location = "../../logged.html"
      })
  }
 
