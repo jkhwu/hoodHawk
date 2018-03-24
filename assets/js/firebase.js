@@ -34,13 +34,13 @@ if (signIn) {
 }
 
 function logIn() {
-    window.location = "https://ryanv027.github.io/hoodhawk/logged.html"
+    window.location = "https://ryanv027.github.io/hoodHawk/logged.html"
 }
 
 //logout function
 logout.addEventListener('click', function() {
     firebase.auth().signOut();
-    window.location = "https://ryanv027.github.io/hoodhawk/index.html"
+    window.location = "https://ryanv027.github.io/hoodHawk/index.html"
 })
 
 //sign up function
@@ -59,7 +59,7 @@ if (signUp) {
                     displayName: "display"
                 });
             });
-        window.location = "https://ryanv027.github.io/hoodhawk/logged.html"
+        window.location = "https://ryanv027.github.io/hoodHawk/logged.html"
     })
 }
 //listens for an authentication sign in and updates uid so we can retrieve stored info

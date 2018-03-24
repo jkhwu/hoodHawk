@@ -27,7 +27,9 @@ function mortCalc() {
         var mort = (houseVal * ((int / 12) * (1 + (int / 12)) ** 360)) / (((1 + (int / 12)) ** 360) - 1)
         console.log("mortgage: " + mort)
         console.log("house val: " + houseVal)
-        $("#mortgage").text("$" + Math.round(mort).toLocaleString() + " per month")
+        $("#affordTable").append('<tr><th>Mortgage:</th><td><span id="mortgage"></span></td></tr>')
+        if (mort == null) $("#mortgage").text("not available")
+        else $("#mortgage").text("$" + Math.round(mort).toLocaleString() + " per month")
     });
 }
 // })

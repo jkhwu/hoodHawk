@@ -165,11 +165,20 @@ function rental(address, zipCode, propTax) {
         },
         data: {}
     }).then(function(data) {
-        console.log(data)
+        console.log("Rental Data: " + data)
+            //house value data
         houseVal = data[0]["property/rental_yield"].result.value
-        $("#houseValue").text(`$${houseVal.toLocaleString()}`)
-        $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`)
+        $("#affordTable").append('<tr><th>Value:</th><td id="houseValue"></td></tr>')
+        if (houseVal == null) $("#houseValue").text("not available")
+        else $("#houseValue").text(`$${houseVal.toLocaleString()}`)
+            // monthly rent data
+        var rent = data[0]["property/rental_yield"].result.monthly_rent
+        $("#affordTable").append('<tr><th>Monthly Rent:</th><td id="monthlyRent"></td></tr>')
+        if (rent == null) $("#monthlyRent").text("not available")
+        else $("#monthlyRent").text(`$${rent.toLocaleString()} per month`)
+
         mortCalc()
+
         $("#affordTable").append('<tr><th>Property Tax:</th><td><span id="propertyTax"></span></td></tr>')
         if (propTax == null) $("#propertyTax").text("not available")
         else $("#propertyTax").text("$" + Math.round(propTax).toLocaleString() + " per year")
