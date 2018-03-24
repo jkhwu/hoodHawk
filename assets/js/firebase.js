@@ -1,14 +1,13 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyCtlBri34np_cnJEmGy_mDiz-d-3B7tmbk",
-    authDomain: "hood-hawk.firebaseapp.com",
-    databaseURL: "https://hood-hawk.firebaseio.com",
-    projectId: "hood-hawk",
-    storageBucket: "",
-    messagingSenderId: "360803796367"
+    apiKey: "AIzaSyD_jrOnZmqkt6Mz_yo-brdsefuqPB5FsHM",
+    authDomain: "hoodhawk-49160.firebaseapp.com",
+    databaseURL: "https://hoodhawk-49160.firebaseio.com",
+    projectId: "hoodhawk-49160",
+    storageBucket: "hoodhawk-49160.appspot.com",
+    messagingSenderId: "685681342098"
 };
 firebase.initializeApp(config);
-
 //GLOBAL VARIABLES
 var newAdd = ''
 var newZip = ''
