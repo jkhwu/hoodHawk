@@ -76,12 +76,12 @@ function initial(address, zipCode) {
             $("#essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
             if (sqFt == null) $("#sqFtText").text("not available")
             else $("#sqFtText").text(sqFt.toLocaleString())
-
+                //property type data
             var propType = data[0]["property/details"].result.property.property_type
             $("#essentialsTable").append('<tr><th>Property Type:</th><td id="propTypeText"></td></tr>')
             if (propType == null) $("#propTypeText").text("not available")
             else $("#propTypeText").text(propType)
-
+                //assessed value and year data
             var assessedVal = data[0]["property/details"].result.assessment.total_assessed_value
             var assessedYr = data[0]["property/details"].result.assessment.assessment_year
             $("#essentialsTable").append('<tr><th>Assessed Value:</th><td><span id="assessedValueText"></span><span id="assessmentYearText"></span></td></tr>')
@@ -90,14 +90,13 @@ function initial(address, zipCode) {
             if (assessedYr == null) $("#assessmentYearText").text("(year of assessment not available)")
             else $("#assessmentYearText").text(" (as of " + assessedYr + ")")
 
-
             var propTax = data[0]["property/details"].result.assessment.tax_amount
-            $("#propertyTax").text(propTax.toLocaleString());
 
+            // Other AJAX calls
             initMap()
             school(address, zipCode)
             crime(block)
-            rental(address, zipCode)
+            rental(address, zipCode, propTax)
         }
     });
 }
@@ -152,7 +151,7 @@ function crime(block) {
 // Property Rental Stats Call \\
 console.log(`rental call: ${address} and ${zipCode}`)
 
-function rental(address, zipCode) {
+function rental(address, zipCode, propTax) {
 
     var url = `https://cors-anywhere.herokuapp.com/https://api.housecanary.com/v2/property/rental_yield?address=${address}&zipcode=${zipCode}`
     $.ajax({
@@ -171,6 +170,10 @@ function rental(address, zipCode) {
         $("#houseValue").text(`$${houseVal.toLocaleString()}`)
         $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`)
         mortCalc()
+        $("#affordTable").append('<tr><th>Property Tax:</th><td><span id="propertyTax"></span></td></tr>')
+        if (propTax == null) $("#propertyTax").text("not available")
+        else $("#propertyTax").text("$" + Math.round(propTax).toLocaleString() + " per year")
+        console.log("propTax: $" + propTax + " per year")
     })
 }
 
