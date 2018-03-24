@@ -21,8 +21,8 @@
                 <a href="#" class="brand-logo"><img id="navLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="#" class="cyan-text">TBD</a></li>
-                    <li><a href="#" class="cyan-text">Favorites</a></li>
-                    <li><a href="#" class="cyan-text">Logout</a></li>
+                    <li><a href="#" class="cyan-text" id="favorites">Favorites</a></li>
+                    <li><a href="#" class="cyan-text" id="logout">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -198,6 +198,19 @@
                                     <tr>
                                         <th>Rental Value:</th>
                                         <td id="rentalValueText">$<span id="assessedValueText">5</span> per month</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">flash_on</i>Favorites</div>
+                        <div class="collapsible-body">
+                            <table class="bordered centered responsive-table">
+                                <tbody>
+                                    <tr>
+                                        <th></th>
+                                        <td id="favoriteDisplay"></td>
                                     </tr>
                                 </tbody>
                             </table>
