@@ -9,9 +9,8 @@ var long = ''
 var address = ''
 var zipCode = ''
 var houseVal
-var key = '0Q2I3E0APS59RZARVAN9'
-var secret = 'ZDqVIaqdpd8YawvrIqNnB0HMJOwKLX0y'
-
+var key = 'FETHR94C2FO05R74K391'
+var secret = 'wVdsXThshlg7TOKs0e00IhO4xFTtF1rI'
 
 //                 \\
 //   Event Handler   \\
@@ -42,6 +41,7 @@ function initial(address, zipCode) {
         },
         data: {}
     }).then(function(data) {
+        console.log("property details: ")
         console.log(data)
         if (data[0]["property/details"].result === null) {
             $("#addressHeader").html("Sorry! I couldn't find any information about that address.")
@@ -52,7 +52,7 @@ function initial(address, zipCode) {
             zip = data[0].address_info.zipcode
             lat = data[0].address_info.lat
             long = data[0].address_info.lng
-            $("#addressHeader").text(data[0].address_info.address_full).append('<br><a id="favorites" class="waves-effect waves-light btn cyan"><i class="material-icons left">star</i>Add to Favorites</a>')
+            $("#addressHeader").empty().text(data[0].address_info.address_full).append('<br><a id="addFavorite" class="waves-effect waves-light btn cyan"><i class="material-icons left">star</i>Add to Favorites</a>')
             $("#bed, #bath").removeClass("blue-grey-text text-lighten-4").addClass("cyan-text");
             $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
             $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
@@ -70,8 +70,8 @@ function initial(address, zipCode) {
                 $("#fire").removeClass("blue-grey-text text-lighten-4")
                 $("#fire").addClass("deep-orange-text")
             }
-
-            //sqft data
+            $("#essentialsTable").empty()
+                //sqft data
             var sqFt = data[0]["property/details"].result.property.building_area_sq_ft
             $("#essentialsTable").append('<tr><th>Square Feet:</th><td id="sqFtText"></td></tr>')
             if (sqFt == null) $("#sqFtText").text("not available")
@@ -118,10 +118,24 @@ function school(address, zipCode) {
         },
         data: {}
     }).then(function(data) {
+        console.log("schools: ")
         console.log(data)
-        $("#schoolsElem").text(titleCase(data[0]["property/school"].result.school.elementary[0].name))
-        $("#schoolsMiddle").text(titleCase(data[0]["property/school"].result.school.middle[0].name))
-        $("#schoolsHigh").text(titleCase(data[0]["property/school"].result.school.high[0].name))
+        $("#schoolTable").empty();
+        // elem school name
+        var elem = data[0]["property/school"].result.school.elementary[0].name
+        $("#schoolTable").append('<tr><th>Elementary:</th><td id="schoolsElem"></td></tr>')
+        if (elem == null) $("#schoolsElem").text("not available")
+        else $("#schoolsElem").text(titleCase(elem));
+        // middle school name
+        var middle = data[0]["property/school"].result.school.middle[0].name
+        $("#schoolTable").append('<tr><th>Middle:</th><td id="schoolsMiddle"></td></tr>')
+        if (middle == null) $("#schoolsMiddle").text("not available")
+        else $("#schoolsMiddle").text(titleCase(middle));
+        //high school name
+        var high = data[0]["property/school"].result.school.high[0].name
+        $("#schoolTable").append('<tr><th>High:</th><td id="schoolsHigh"></td></tr>')
+        if (high == null) $("#schoolsHigh").text("not available")
+        else $("#schoolsHigh").text(titleCase(high))
     })
 }
 
@@ -141,15 +155,34 @@ function crime(block) {
         },
         data: {}
     }).then(function(data) {
-        $("#crimePctNational").text(data[0]["block/crime"].result.all.nation_percentile)
-        $("#crimeIncidents").text(data[0]["block/crime"].result.all.incidents)
-        $("#crimePctCounty").text(data[0]["block/crime"].result.all.county_percentile)
+        console.log("crime: ")
+        console.log(data)
+        $("#crimeTable").empty();
 
+        if (data[0]["block/crime"].result == null) $("#crimeTable").append('<tr><th>Data not available</th></tr>')
+        else {
+            // Number of incidents
+            var crimeIncidents = data[0]["block/crime"].result.all.incidents
+            $("#crimeTable").append('<tr><th>Incidents:</th><td id="crimeIncidents"></td></tr>')
+            if (crimeIncidents == null) $("#crimeIncidents").text("not available")
+            else $("#crimeIncidents").text(crimeIncidents);
+
+            // County crime percentile
+            var crimePctCty = data[0]["block/crime"].result.all.county_percentile
+            $("#crimeTable").append('<tr><th>County Percentile:</th><td id="crimePctCounty"></td></tr>')
+            if (crimePctCty == null) $("#crimePctCounty").text("not available")
+            else $("#crimePctCounty").text(crimePctCty);
+
+            //National crime percentile
+            var crimePctNatl = data[0]["block/crime"].result.all.nation_percentile
+            $("#crimeTable").append('<tr><th>National Percentile:</th><td id="crimePctNational"></td></tr>')
+            if (crimePctNatl == null) $("#crimePctNational").text("not available")
+            else $("#crimePctNational").text(crimePctNatl)
+        }
     });
 }
 
 // Property Rental Stats Call \\
-console.log(`rental call: ${address} and ${zipCode}`)
 
 function rental(address, zipCode, propTax) {
 
@@ -165,11 +198,22 @@ function rental(address, zipCode, propTax) {
         },
         data: {}
     }).then(function(data) {
+        console.log("rental data: ")
         console.log(data)
+        $("#affordTable").empty();
+        //house value data
         houseVal = data[0]["property/rental_yield"].result.value
-        $("#houseValue").text(`$${houseVal.toLocaleString()}`)
-        $("#monthlyRent").text(`$${data[0]["property/rental_yield"].result.monthly_rent.toLocaleString()} per month`)
-        mortCalc()
+        $("#affordTable").append('<tr><th>Value:</th><td id="houseValue"></td></tr>')
+        if (houseVal == null) $("#houseValue").text("not available")
+        else $("#houseValue").text(`$${houseVal.toLocaleString()}`);
+        // monthly rent data
+        var rent = data[0]["property/rental_yield"].result.monthly_rent
+        $("#affordTable").append('<tr><th>Monthly Rent:</th><td id="monthlyRent"></td></tr>')
+        if (rent == null) $("#monthlyRent").text("not available")
+        else $("#monthlyRent").text(`$${rent.toLocaleString()} per month`);
+        // mortgage data
+        mortCalc();
+        //property tax data
         $("#affordTable").append('<tr><th>Property Tax:</th><td><span id="propertyTax"></span></td></tr>')
         if (propTax == null) $("#propertyTax").text("not available")
         else $("#propertyTax").text("$" + Math.round(propTax).toLocaleString() + " per year")
@@ -201,6 +245,7 @@ function blockgroup() {
         },
         data: {}
     }).then(function(data) {
+        console.log("block group: ")
         console.log(data)
     });
 }
@@ -219,6 +264,7 @@ function zipdetail() {
         },
         data: {}
     }).then(function(data) {
+        console.log("zip detail: ")
         console.log(data)
     });
 }
