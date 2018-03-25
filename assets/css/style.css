@@ -19,7 +19,7 @@
     width: 50%;
 }
 
-#favorites {
+#addFavorite {
     margin-top: 20px;
 }
 
@@ -80,6 +80,11 @@
 .loginPage {
     background: url("../images/sf.jpg");
     background-size: cover;
+}
+
+.delete {
+    position: relative;
+    top: 1.5px;
 }
 
 

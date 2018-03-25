@@ -9,9 +9,8 @@ var long = ''
 var address = ''
 var zipCode = ''
 var houseVal
-var key = '0Q2I3E0APS59RZARVAN9'
-var secret = 'ZDqVIaqdpd8YawvrIqNnB0HMJOwKLX0y'
-
+var key = 'FETHR94C2FO05R74K391'
+var secret = 'wVdsXThshlg7TOKs0e00IhO4xFTtF1rI'
 
 //                 \\
 //   Event Handler   \\
@@ -53,7 +52,7 @@ function initial(address, zipCode) {
             zip = data[0].address_info.zipcode
             lat = data[0].address_info.lat
             long = data[0].address_info.lng
-            $("#addressHeader").empty().text(data[0].address_info.address_full).append('<br><a id="favorites" class="waves-effect waves-light btn cyan"><i class="material-icons left">star</i>Add to Favorites</a>')
+            $("#addressHeader").empty().text(data[0].address_info.address_full).append('<br><a id="addFavorite" class="waves-effect waves-light btn cyan"><i class="material-icons left">star</i>Add to Favorites</a>')
             $("#bed, #bath").removeClass("blue-grey-text text-lighten-4").addClass("cyan-text");
             $("#numBath").text(data[0]["property/details"].result.property.total_bath_count)
             $("#numBed").text(data[0]["property/details"].result.property.number_of_bedrooms)
@@ -121,7 +120,7 @@ function school(address, zipCode) {
     }).then(function(data) {
         console.log("schools: ")
         console.log(data)
-        $("#schooTable").empty();
+        $("#schoolTable").empty();
         // elem school name
         var elem = data[0]["property/school"].result.school.elementary[0].name
         $("#schoolTable").append('<tr><th>Elementary:</th><td id="schoolsElem"></td></tr>')
@@ -160,23 +159,26 @@ function crime(block) {
         console.log(data)
         $("#crimeTable").empty();
 
-        // Number of incidents
-        var crimeIncidents = data[0]["block/crime"].result.all.incidents
-        $("#crimeTable").append('<tr><th>Incidents:</th><td id="crimeIncidents"></td></tr>')
-        if (crimeIncidents == null) $("#crimeIncidents").text("not available")
-        else $("#crimeIncidents").text(crimeIncidents);
+        if (data[0]["block/crime"].result == null) $("#crimeTable").append('<tr><th>Data not available</th></tr>')
+        else {
+            // Number of incidents
+            var crimeIncidents = data[0]["block/crime"].result.all.incidents
+            $("#crimeTable").append('<tr><th>Incidents:</th><td id="crimeIncidents"></td></tr>')
+            if (crimeIncidents == null) $("#crimeIncidents").text("not available")
+            else $("#crimeIncidents").text(crimeIncidents);
 
-        // County crime percentile
-        var crimePctCty = data[0]["block/crime"].result.all.county_percentile
-        $("#crimeTable").append('<tr><th>County Percentile:</th><td id="crimePctCounty"></td></tr>')
-        if (crimePctCty == null) $("#crimePctCounty").text("not available")
-        else $("#crimePctCounty").text(crimePctCty);
+            // County crime percentile
+            var crimePctCty = data[0]["block/crime"].result.all.county_percentile
+            $("#crimeTable").append('<tr><th>County Percentile:</th><td id="crimePctCounty"></td></tr>')
+            if (crimePctCty == null) $("#crimePctCounty").text("not available")
+            else $("#crimePctCounty").text(crimePctCty);
 
-        //National crime percentile
-        var crimePctNatl = data[0]["block/crime"].result.all.nation_percentile
-        $("#crimeTable").append('<tr><th>National Percentile:</th><td id="crimePctNational"></td></tr>')
-        if (crimePctNatl == null) $("#crimePctNational").text("not available")
-        else $("#crimePctNational").text(crimePctNatl)
+            //National crime percentile
+            var crimePctNatl = data[0]["block/crime"].result.all.nation_percentile
+            $("#crimeTable").append('<tr><th>National Percentile:</th><td id="crimePctNational"></td></tr>')
+            if (crimePctNatl == null) $("#crimePctNational").text("not available")
+            else $("#crimePctNational").text(crimePctNatl)
+        }
     });
 }
 

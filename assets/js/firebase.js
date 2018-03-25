@@ -75,14 +75,12 @@ firebase.auth().onAuthStateChanged(function(user) {
 function retrieve() {
     firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
         console.log(snapshot.val())
-
-        newAdd = snapshot.val().favoriteAdd
-        newZip = snapshot.val().favoriteZip
-        console.log(snapshot.val().favoriteZip)
-        console.log(snapshot.val().favoriteAdd)
-        if (newAdd !== undefined && newZip !== undefined) {
-            $('#favoriteDisplay').html(`<button id='populate'>click me</button><br><p>${newAdd}</p>`)
-            $('#favoriteDisplay').append(`<br>${newZip}<br><button id='delete'>delete fav</button>`)
+        if (newAdd !== undefined && newZip !== undefined && snapshot.val() !== null) {
+            newAdd = snapshot.val().favoriteAdd
+            newZip = snapshot.val().favoriteZip
+            console.log(snapshot.val().favoriteZip)
+            console.log(snapshot.val().favoriteAdd)
+            $('#favoriteDisplay').append(`<a class="populate waves-effect waves-light btn-small cyan-text">${newAdd.toUpperCase()}, ${newZip}</a><a class="delete waves-effect waves-light btn-small"><i class="material-icons red-text">delete_forever</i></a>`)
         } else {
             return false
         }
@@ -90,11 +88,11 @@ function retrieve() {
     })
 }
 //an onclick function that makes an ajax call from the favorites
-$('body').on('click', '#populate', function() {
+$('body').on('click', '.populate', function() {
         initial(newAdd, newZip)
     })
     //an onclick function that will delete the favorites from the firebase database
-$('body').on('click', '#delete', function() {
+$('body').on('click', '.delete', function() {
         firebase.database().ref('/users/' + uid).update({
             favoriteAdd: null,
             favoriteZip: null
@@ -102,13 +100,11 @@ $('body').on('click', '#delete', function() {
         $('#favoriteDisplay').html('')
     })
     //an onclick function that will update firebase database with favorites information
-$('body').on('click', '#favorites', function() {
+$('body').on('click', '#addFavorite', function() {
     console.log('fav button working')
     firebase.database().ref('/users/' + uid).update({
         favoriteAdd: address,
         favoriteZip: zipCode
     })
-    $('#favoriteDisplay').html(`<button id='populate'>click me</button><br><p>${address}</p>`)
-    $('#favoriteDisplay').append(`<br>${zipCode}<br><button id='delete'>delete fav</button>`)
-
+    $('#favoriteDisplay').append(`<a class="populate waves-effect waves-light btn-small cyan-text">${address.toUpperCase()}, ${zipCode}</a><a class="delete waves-effect waves-light btn-small"><i class="material-icons red-text">delete_forever</i></a>`)
 })
