@@ -1,4 +1,3 @@
-
 // Create map on page load \\
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -18,50 +17,50 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Set map to initial point \\
 
-        function launchMap() {
-            var myLocation = {
-                lat: 37.421999900,
-                lng: -122.084057500
-            };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: 37.421999900,
-                    lng: -122.084057500
-                },
-                zoom: 14
-            });
-            var panorama = new google.maps.StreetViewPanorama(
-                document.getElementById('pano'), {
-                    position: myLocation,
-                    pov: {
-                        heading: 34,
-                        pitch: 10
-                    }
-                });
-            map.setStreetView(panorama);
-        }
+function launchMap() {
+    var myLocation = {
+        lat: 31.2397,
+        lng: 121.4998
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: 31.2397,
+            lng: 121.4998
+        },
+        zoom: 14
+    });
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+            position: myLocation,
+            pov: {
+                heading: 34,
+                pitch: 10
+            }
+        });
+    map.setStreetView(panorama);
+}
 
 // Set map to target address lat + long \\
 
-        function initMap() {
-            var myLocation = {
-                lat: +lat,
-                lng: +long
-            };
-            var map = new google.maps.Map(document.getElementById('map'), {
-                center: {
-                    lat: +lat,
-                    lng: +long
-                },
-                zoom: 14
-            });
-            var panorama = new google.maps.StreetViewPanorama(
-                document.getElementById('pano'), {
-                    position: myLocation,
-                    pov: {
-                        heading: 34,
-                        pitch: 10
-                    }
-                });
-            map.setStreetView(panorama);
-        }
+function initMap() {
+    var myLocation = {
+        lat: +lat,
+        lng: +long
+    };
+    var map = new google.maps.Map(document.getElementById('map'), {
+        center: {
+            lat: +lat,
+            lng: +long
+        },
+        zoom: 14
+    });
+    var panorama = new google.maps.StreetViewPanorama(
+        document.getElementById('pano'), {
+            position: myLocation,
+            pov: {
+                heading: 34,
+                pitch: 10
+            }
+        });
+    map.setStreetView(panorama);
+}

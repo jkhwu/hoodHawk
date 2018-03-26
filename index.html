@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang='en'>
+
 <head>
     <title>HoodHawk Login</title>
     <!-- Required meta tags -->
@@ -10,37 +11,40 @@
     <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel='stylesheet' href='assets/css/style.css'>
 </head>
+
 <body class="loginPage">
     <div id="index-banner" class="parallax-container">
-            <div class="section no-pad-bot">
-                    <a href="#" class="brand-logo"><img id="loginLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
-                <div class="container">
-                    <br><br>
-                    <div class="row center">
-                        <h5 class="slogan header col s12">Please Log In</h5>
-                    </div>
-                    <!-- Form Section -->
-                    <div id="formZone" class="row center">
-                        <form class="col s10 offset-s1">
-                            <div class="formContainer clearfix">
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">account_circle</i>
-                                    <input id="icon_prefix" type="text" class="validate">
-                                    <label for="icon_prefix">Username</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <i class="material-icons prefix">lock_outline</i>
-                                    <input id="icon_telephone" type="tel" class="validate">
-                                    <label for="icon_telephone">Password</label>
-                                </div>
-                            </div>
-                            <input id="logIn" type="submit" value="Log In" class="btn-large waves-effect waves-light cyan">
-                        </form>
-                    </div>
-                    <br><br>
+        <div class="section no-pad-bot">
+            <a href="#" class="brand-logo"><img id="loginLogo" src="assets/images/hoodHawk.png" alt="company logo"></a>
+            <div class="container">
+                <br><br>
+                <div class="row center">
+                    <h5 class="slogan header col s12">Please Log In</h5>
                 </div>
+                <!-- Form Section -->
+                <div id="formZone" class="row center">
+                    <form class="col s10 offset-s1">
+                        <div class="formContainer clearfix">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_circle</i>
+                                <input id="txtEmail" type="text" class="validate">
+                                <label for="icon_prefix">Username</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">lock_outline</i>
+                                <input id="txtPassword" type="password" class="validate">
+                                <label for="icon_telephone">Password</label>
+                            </div>
+                        </div>
+                        <button id="signIn" type="submit" class="btn-large waves-effect waves-light cyan">Sign In</button>
+                        <button id="signUp" type="submit" class="btn-large waves-effect waves-light cyan">Sign Up</button>
+                        <button id="logout" type="submit" class="btn-large waves-effect waves-light cyan hide">Logout</button>
+                    </form>
+                </div>
+                <br><br>
             </div>
         </div>
+    </div>
 
 
 
@@ -58,4 +62,5 @@
     <script src='assets/js/hCanary.js'></script>
     <script src='assets/js/main.js'></script>
 </body>
+
 </html>

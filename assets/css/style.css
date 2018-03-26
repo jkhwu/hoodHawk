@@ -19,6 +19,10 @@
     width: 50%;
 }
 
+#addFavorite {
+    margin-top: 20px;
+}
+
 #mapDataSection {
     margin: 30px 30px 30px 30px;
     padding: 0;
@@ -76,6 +80,11 @@
 .loginPage {
     background: url("../images/sf.jpg");
     background-size: cover;
+}
+
+.delete {
+    position: relative;
+    top: 1.5px;
 }
 
 
