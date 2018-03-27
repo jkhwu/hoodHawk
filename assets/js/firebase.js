@@ -33,8 +33,9 @@ if (signIn) {
     })
 }
 
+
 function logIn() {
-    window.location = "https://abuckstopshere.io/hoodHawk/logged.html"
+    window.location = "https://abuckstopshere.github.io/hoodHawk/logged.html"
 }
 
 //logout function
