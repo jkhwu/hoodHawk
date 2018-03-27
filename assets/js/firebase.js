@@ -34,13 +34,13 @@ if (signIn) {
 }
 
 function logIn() {
-    window.location = "https://ryanv027.github.io/hoodHawk/logged.html"
+    window.location = "https://abuckstopshere.io/hoodHawk/logged.html"
 }
 
 //logout function
 logout.addEventListener('click', function() {
     firebase.auth().signOut();
-    window.location = "https://ryanv027.github.io/hoodHawk/index.html"
+    window.location = "https://abuckstopshere.github.io/hoodHawk/index.html"
 })
 
 //sign up function
@@ -64,14 +64,15 @@ if (signUp) {
 }
 //listens for an authentication sign in and updates uid so we can retrieve stored info
 firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-            uid = user.uid
-            retrieve()
-        } else {
-            console.log('not logged in')
-        }
-    })
-    //retrieves the stored favorite info and displays it on html 
+    if (user) {
+        uid = user.uid
+        retrieve()
+    } else {
+        console.log('not logged in')
+    }
+})
+
+//retrieves the stored favorite info and displays it on html 
 function retrieve() {
     firebase.database().ref('/users/' + uid).once('value').then(function(snapshot) {
         console.log(snapshot.val())
